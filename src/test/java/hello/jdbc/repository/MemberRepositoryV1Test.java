@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
@@ -15,7 +14,7 @@ import static hello.jdbc.connection.ConnectionConst.*;
 
 @Slf4j
 class MemberRepositoryV1Test {
-    MemberRepositoryV1 repository;
+    MemberRepositoryV2 repository;
 
     @BeforeEach
     void beforeEach() {
@@ -28,7 +27,7 @@ class MemberRepositoryV1Test {
         dataSource.setUsername(USERNAME);
         dataSource.setPassword(PASSWORD);
 
-        repository = new MemberRepositoryV1(dataSource);
+        repository = new MemberRepositoryV2(dataSource);
     }
     @Test
     void crud() throws SQLException {
